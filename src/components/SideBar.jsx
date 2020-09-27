@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { Drawer } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
+import { useAuth } from '../providers/Auth';
 
 const Option = styled(Link)`
   min-width: 240px;
-  padding: 20px 20px;
+  padding: 20px;
   color: #fff;
-  border-bottom: 2px solid #FC4C55;
+  border-bottom: 2px solid #fc4c55;
   &:hover {
     background-color: #364345;
   }
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
 });
 
 const SideBar = ({ anchor, open, onClose, options }) => {
+  const { authenticated } = useAuth();
   const classes = useStyles();
   return (
     <Drawer
@@ -35,6 +37,11 @@ const SideBar = ({ anchor, open, onClose, options }) => {
           {`${option.charAt(0).toUpperCase() + option.slice(1)}`}
         </Option>
       ))}
+      {authenticated && (
+        <Option to="/favorites" key="favorites">
+          Favorites
+        </Option>
+      )}
     </Drawer>
   );
 };
