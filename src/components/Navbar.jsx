@@ -18,6 +18,7 @@ import styled from 'styled-components';
 import LoginModal from './LoginModal';
 import wizelogo from '../assets/images/logo.png';
 import { useAuth } from '../providers/Auth';
+// import { useSearchBarProvider } from '../providers/Search/Search.provider';
 
 const UserAccountContainer = styled.div`
   flex-grow: 1;
@@ -32,6 +33,7 @@ const WizeIcon = styled.img`
 `;
 
 const LeftNavbarSide = styled.a`
+  cursor: pointer;
   display: flex;
   font-size: 30px;
   padding-left: 5px;
@@ -97,19 +99,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar({ onDisplayMenu }) {
+function Navbar({ onDisplayMenu }) {
   const { authenticated, logout } = useAuth();
   const history = useHistory();
+  // const { searchVideo } = useSearchBarProvider();
   // FOR LOGIN MODAL
   const [openModal, setOpenModal] = React.useState(false);
 
-  // FOR ACCOUNT MENU 
+  // FOR ACCOUNT MENU
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openProfileMenu = Boolean(anchorEl);
 
   const classes = useStyles();
   const getVideos = (value) => {
-    console.log(value);
+    setTimeout(() => {
+      console.log(value);
+      // searchVideo(value);
+    }, 1000);
   };
 
   // FUNCTIONS FOR OPENING AND CLOSING LOGIN MODAL
@@ -148,7 +154,7 @@ export default function Navbar({ onDisplayMenu }) {
           >
             <MenuIcon />
           </IconButton>
-          <LeftNavbarSide href="/">
+          <LeftNavbarSide href="/home">
             <WizeIcon src={wizelogo} />
             Tube
           </LeftNavbarSide>
@@ -210,3 +216,5 @@ export default function Navbar({ onDisplayMenu }) {
     </div>
   );
 }
+
+export default Navbar;
