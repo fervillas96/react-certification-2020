@@ -7,6 +7,7 @@ import VideoProvider from '../../providers/VideoData';
 import FavoritesProvider from '../../providers/Favorites';
 import HomePage from '../../pages/Home';
 import VideoPage from '../../pages/Video';
+import FavoritesPage from '../../pages/Favorites';
 import Navbar from '../Navbar';
 import SideBar from '../SideBar';
 
@@ -39,7 +40,9 @@ function App() {
                   </VideoProvider>
                 </Route>
                 <Route exact path="/favorites">
-                  {/* <FavoritesPage /> */}
+                  <VideoProvider>
+                    <FavoritesPage />
+                  </VideoProvider>
                 </Route>
                 <Route exact path="/video/:videoId">
                   <VideoProvider>

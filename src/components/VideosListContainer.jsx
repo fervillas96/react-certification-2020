@@ -2,7 +2,6 @@ import React from 'react';
 
 import styled from 'styled-components';
 import VideoInfoCard from './VideoInfoCard';
-import { useSearchBarProvider } from '../providers/Search/Search.provider';
 
 const VideosContainer = styled.div`
   display: flex;
@@ -12,9 +11,7 @@ const VideosContainer = styled.div`
   padding: 10px;
 `;
 
-const VideosListContainer = () => {
-  const { videos } = useSearchBarProvider();
-
+const VideosListContainer = ({ videos }) => {
   return (
     <VideosContainer>
       {videos &&
