@@ -9,6 +9,8 @@ module.exports = () => {
       part: 'snippet',
       key: `${REACT_APP_YOUTUBE_API_KEY}`,
       type: ['video'],
+      maxResults: 4,
+      q: 'Pokemon',
     },
   });
 };
