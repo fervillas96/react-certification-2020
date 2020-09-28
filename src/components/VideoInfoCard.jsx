@@ -8,7 +8,7 @@ const VideoCard = styled.div`
   cursor: pointer;
   flex-basis: 20%;
   background-color: white;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   border-radius: 10px;
   box-shadow: 1px 2px;
   margin: 10px;

@@ -11,7 +11,7 @@ const RecomendationsContainer = styled.div`
   flex: 1;
   flex-direction: column;
   min-height: 200px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 `;
 
 const Recomendations = ({ videoId }) => {

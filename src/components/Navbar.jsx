@@ -154,7 +154,7 @@ function Navbar({ onDisplayMenu }) {
           >
             <MenuIcon />
           </IconButton>
-          <LeftNavbarSide href="/home">
+          <LeftNavbarSide href="/">
             <WizeIcon src={wizelogo} />
             Tube
           </LeftNavbarSide>

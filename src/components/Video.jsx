@@ -13,7 +13,7 @@ const VideoDataContainer = styled.div`
   display: flex;
   flex: 3;
   flex-direction: column;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   min-height: 700px;
 `;
 

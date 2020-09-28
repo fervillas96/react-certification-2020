@@ -15,27 +15,45 @@ function useSearchBarProvider() {
 function SearchBarProvider({ children }) {
   const [videos, setVideos] = useState({});
   const [recomendations, setRecomendations] = useState({});
+  const { REACT_APP_YOUTUBE_API_KEY } = process.env;
 
   useEffect(() => {
     const axiosCall = axiosClient();
-    axiosCall.get('/search', { q: 'Soccer', maxResults: 12 }).then((apiResult) => {
+    const params = {
+      part: 'snippet',
+      key: `${REACT_APP_YOUTUBE_API_KEY}`,
+      type: ['video'],
+      maxResults: 12,
+      q: 'Wizeline',
+    };
+    axiosCall.get('/search', { params }).then((apiResult) => {
       setVideos(apiResult.data);
     });
   }, []);
 
   const searchVideo = useCallback(async (search) => {
     const axiosCall = axiosClient();
-    const searchedVideos = await axiosCall.get('/search', { q: search, maxResults: 12 });
+    const params = {
+      part: 'snippet',
+      key: `${REACT_APP_YOUTUBE_API_KEY}`,
+      type: ['video'],
+      maxResults: 12,
+      q: search,
+    };
+    const searchedVideos = await axiosCall.get('/search', { params });
     setVideos(searchedVideos.data);
   }, []);
 
   const searchRecomendations = useCallback(async (videoId) => {
     const axiosCall = axiosClient();
-    const relatedVideos = await axiosCall.get('/search', {
-      relatedToVideoId: videoId,
+    const params = {
+      part: 'snippet',
+      key: `${REACT_APP_YOUTUBE_API_KEY}`,
+      type: 'video',
       maxResults: 3,
-    });
-
+      relatedToVideoId: videoId,
+    };
+    const relatedVideos = await axiosCall.get('/search', { params });
     setRecomendations(relatedVideos.data);
   }, []);
 
