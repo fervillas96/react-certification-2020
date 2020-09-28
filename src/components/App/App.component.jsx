@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
-import SearchBarProvider from '../../providers/Search';
+import SearchProvider from '../../providers/Search';
 import VideoProvider from '../../providers/VideoData';
 import FavoritesProvider from '../../providers/Favorites';
 import HomePage from '../../pages/Home';
@@ -25,7 +25,7 @@ function App() {
       <>
         <AuthProvider>
           <FavoritesProvider>
-            <SearchBarProvider>
+            <SearchProvider>
               <Navbar onDisplayMenu={() => toggleDrawer(menu, true)} />
               <SideBar
                 anchor={menu}
@@ -55,7 +55,7 @@ function App() {
                   </VideoProvider>
                 </Route>
               </Switch>
-            </SearchBarProvider>
+            </SearchProvider>
           </FavoritesProvider>
         </AuthProvider>
       </>

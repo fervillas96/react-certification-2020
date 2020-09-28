@@ -18,7 +18,7 @@ import styled from 'styled-components';
 import LoginModal from './LoginModal';
 import wizelogo from '../assets/images/logo.png';
 import { useAuth } from '../providers/Auth';
-// import { useSearchBarProvider } from '../providers/Search/Search.provider';
+import { useSearchProvider } from '../providers/Search/Search.provider';
 
 const UserAccountContainer = styled.div`
   flex-grow: 1;
@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
 function Navbar({ onDisplayMenu }) {
   const { authenticated, logout } = useAuth();
   const history = useHistory();
-  // const { searchVideo } = useSearchBarProvider();
+  const { searchVideo } = useSearchProvider();
   // FOR LOGIN MODAL
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -111,11 +111,11 @@ function Navbar({ onDisplayMenu }) {
   const openProfileMenu = Boolean(anchorEl);
 
   const classes = useStyles();
-  const getVideos = (value) => {
-    setTimeout(() => {
-      console.log(value);
-      // searchVideo(value);
-    }, 1000);
+  const handleChange = (e) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      console.log('ENTER');
+      searchVideo(e.target.value);
+    }
   };
 
   // FUNCTIONS FOR OPENING AND CLOSING LOGIN MODAL
@@ -164,7 +164,7 @@ function Navbar({ onDisplayMenu }) {
             </div>
             <InputBase
               placeholder="Search…"
-              onChange={(e) => getVideos(e.target.value)}
+              onKeyPress={(e) => handleChange(e)}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

@@ -1,10 +1,10 @@
 import React from 'react';
 
 import VideoListContainer from '../../components/VideosListContainer';
-import { useSearchBarProvider } from '../../providers/Search/Search.provider';
+import { useSearchProvider } from '../../providers/Search/Search.provider';
 
 function HomePage() {
-  const { videos } = useSearchBarProvider();
+  const { videos } = useSearchProvider();
 
   return (
     <section className="homepage">

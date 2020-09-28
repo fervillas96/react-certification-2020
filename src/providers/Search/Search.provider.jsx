@@ -2,17 +2,17 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 
 import { axiosClient } from '../../utils/axios';
 
-const SearchBarContext = React.createContext(null);
+const SearchContext = React.createContext(null);
 
-function useSearchBarProvider() {
-  const context = useContext(SearchBarContext);
+function useSearchProvider() {
+  const context = useContext(SearchContext);
   if (!context) {
-    throw new Error(`Can't use "userSearchBarProvider" without an SearchBarProvider!`);
+    throw new Error(`Can't use "userSearchProvider" without an SearchProvider!`);
   }
   return context;
 }
 
-function SearchBarProvider({ children }) {
+function SearchProvider({ children }) {
   const [videos, setVideos] = useState({});
   const [recomendations, setRecomendations] = useState({});
   const { REACT_APP_YOUTUBE_API_KEY } = process.env;
@@ -22,7 +22,7 @@ function SearchBarProvider({ children }) {
     const params = {
       part: 'snippet',
       key: `${REACT_APP_YOUTUBE_API_KEY}`,
-      type: ['video'],
+      type: 'video',
       maxResults: 12,
       q: 'Wizeline',
     };
@@ -37,7 +37,7 @@ function SearchBarProvider({ children }) {
       const params = {
         part: 'snippet',
         key: `${REACT_APP_YOUTUBE_API_KEY}`,
-        type: ['video'],
+        type: 'video',
         maxResults: 12,
         q: search,
       };
@@ -64,13 +64,13 @@ function SearchBarProvider({ children }) {
   );
 
   return (
-    <SearchBarContext.Provider
+    <SearchContext.Provider
       value={{ searchVideo, searchRecomendations, videos, recomendations }}
     >
       {children}
-    </SearchBarContext.Provider>
+    </SearchContext.Provider>
   );
 }
 
-export { useSearchBarProvider };
-export default SearchBarProvider;
+export { useSearchProvider };
+export default SearchProvider;

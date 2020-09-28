@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import styled from 'styled-components';
 import VideoInfoCard from './VideoInfoCard';
-import { useSearchBarProvider } from '../providers/Search/Search.provider';
+import { useSearchProvider } from '../providers/Search/Search.provider';
 
 const RecomendationsContainer = styled.div`
   padding: 30px;
@@ -15,7 +15,7 @@ const RecomendationsContainer = styled.div`
 `;
 
 const Recomendations = ({ videoId }) => {
-  const { searchRecomendations, recomendations } = useSearchBarProvider();
+  const { searchRecomendations, recomendations } = useSearchProvider();
 
   useEffect(() => {
     searchRecomendations(videoId);

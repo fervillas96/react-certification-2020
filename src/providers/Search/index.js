@@ -1,1 +1,1 @@
-export { default, useSearchBarProvider } from './Search.provider';
+export { default, useSearchProvider } from './Search.provider';
