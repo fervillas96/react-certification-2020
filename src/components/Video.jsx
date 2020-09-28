@@ -40,14 +40,14 @@ const Video = ({ videoId }) => {
   const { currentVideo } = useVideoProvider();
   const { dispatch, state } = useFavoritesProvider();
   const videoUrl = `https://www.youtube.com/embed/${videoId}`;
-  const isFavorite = videoId in state;
+  const isFavorite = state.favorites[videoId];
 
   const setAsFavorite = () => {
     dispatch({ type: 'ADD_FAVORITE', payload: currentVideo });
   };
 
   const removeFromFavorite = () => {
-    dispatch({ type: 'REMOVE_FAVORITE', payload: currentVideo });
+    dispatch({ type: 'REMOVE_FAVORITE', payload: videoId });
   };
 
   return (

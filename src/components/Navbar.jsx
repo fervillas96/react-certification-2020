@@ -113,8 +113,8 @@ function Navbar({ onDisplayMenu }) {
   const classes = useStyles();
   const handleChange = (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
-      console.log('ENTER');
       searchVideo(e.target.value);
+      history.push('/home');
     }
   };
 

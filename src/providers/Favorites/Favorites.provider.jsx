@@ -11,18 +11,35 @@ function useFavoritesProvider() {
 }
 
 function FavoritesProvider({ children }) {
-  const [state, dispatch] = useReducer((currentState, action) => {
-    switch (action.type) {
-      case 'ADD_FAVORITE':
-        return { ...currentState, [action.payload.id.videoId]: action.payload };
-      case 'REMOVE_FAVORITE':
-        return {
-          ...currentState,
-        };
-      default:
-        break;
+  const [state, dispatch] = useReducer(
+    (currentState, action) => {
+      switch (action.type) {
+        case 'ADD_FAVORITE':
+          return {
+            ...currentState,
+            favorites: {
+              ...currentState.favorites,
+              [action.payload.id.videoId]: action.payload,
+            },
+          };
+        case 'REMOVE_FAVORITE':
+          // eslint-disable-next-line no-case-declarations
+          const actualFavorites = currentState.favorites;
+          delete actualFavorites[action.payload];
+          return {
+            ...currentState,
+            favorites: {
+              actualFavorites,
+            },
+          };
+        default:
+          return currentState;
+      }
+    },
+    {
+      favorites: {},
     }
-  }, {});
+  );
 
   return (
     <FavoritesContext.Provider value={{ state, dispatch }}>
@@ -31,5 +48,5 @@ function FavoritesProvider({ children }) {
   );
 }
 
-export { useFavoritesProvider };
+export { useFavoritesProvider, FavoritesContext };
 export default FavoritesProvider;

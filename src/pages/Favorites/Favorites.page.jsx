@@ -5,13 +5,20 @@ import { useFavoritesProvider } from '../../providers/Favorites/Favorites.provid
 
 function FavoritesPage() {
   const { state } = useFavoritesProvider();
+  const videos = {};
+  const items = [];
 
-  console.log('--- --- FAVORITES PAGE --- ---');
-  console.log(state.length);
+  Object.entries(state.favorites).map((data) => {
+    items.push(data[1]);
+  });
+
+  if (items.length > 1) {
+    videos.items = items;
+  }
 
   return (
     <section className="homepage">
-      <VideoListContainer videos={state} />
+      <VideoListContainer videos={videos} />
     </section>
   );
 }
