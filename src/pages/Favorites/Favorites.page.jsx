@@ -10,9 +10,10 @@ function FavoritesPage() {
 
   Object.entries(state.favorites).map((data) => {
     items.push(data[1]);
+    return data;
   });
 
-  if (items.length > 1) {
+  if (items.length >= 1) {
     videos.items = items;
   }
 

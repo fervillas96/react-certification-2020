@@ -25,7 +25,9 @@ const Recomendations = ({ videoId }) => {
     <RecomendationsContainer>
       {recomendations &&
         recomendations.items &&
-        recomendations.items.map((videoData) => <VideoInfoCard video={videoData} />)}
+        recomendations.items.map((videoData) => (
+          <VideoInfoCard video={videoData} key={videoId} />
+        ))}
     </RecomendationsContainer>
   );
 };

@@ -12,8 +12,6 @@ const VideosContainer = styled.div`
 `;
 
 const VideosListContainer = ({ videos }) => {
-  console.log('...VIDEO LIST CONTAINER...');
-  console.log(videos);
   return (
     <VideosContainer>
       {videos &&
