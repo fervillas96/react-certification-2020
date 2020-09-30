@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import VideoInfoCard from './VideoInfoCard';
+import VideoInfoCard from '../VideoInfoCard';
 
 const VideosContainer = styled.div`
   display: flex;

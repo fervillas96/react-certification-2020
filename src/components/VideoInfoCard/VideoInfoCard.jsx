@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { useVideoProvider } from '../providers/VideoData/VideoData.provider';
+import { useVideoProvider } from '../../providers/VideoData/VideoData.provider';
 
 const VideoCard = styled.div`
   cursor: pointer;

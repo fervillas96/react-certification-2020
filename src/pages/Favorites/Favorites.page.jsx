@@ -1,6 +1,6 @@
 import React from 'react';
 
-import VideoListContainer from '../../components/VideosListContainer';
+import VideoListContainer from '../../components/VideoListContainer';
 import { useFavoritesProvider } from '../../providers/Favorites/Favorites.provider';
 
 function FavoritesPage() {

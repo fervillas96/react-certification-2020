@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
 import styled from 'styled-components';
-import VideoInfoCard from './VideoInfoCard';
-import { useSearchProvider } from '../providers/Search/Search.provider';
+import VideoInfoCard from '../VideoInfoCard';
+import { useSearchProvider } from '../../providers/Search/Search.provider';
 
 const RecomendationsContainer = styled.div`
   padding: 30px;

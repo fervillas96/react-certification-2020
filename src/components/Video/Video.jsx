@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { useVideoProvider } from '../providers/VideoData/VideoData.provider';
-import { useFavoritesProvider } from '../providers/Favorites/Favorites.provider';
+import { useVideoProvider } from '../../providers/VideoData/VideoData.provider';
+import { useFavoritesProvider } from '../../providers/Favorites/Favorites.provider';
 
 const VideoDataContainer = styled.div`
   padding: 30px;

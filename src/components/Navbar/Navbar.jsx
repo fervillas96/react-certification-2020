@@ -15,10 +15,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { AccountCircle } from '@material-ui/icons';
 import SearchIcon from '@material-ui/icons/Search';
 import styled from 'styled-components';
-import LoginModal from './LoginModal';
-import wizelogo from '../assets/images/logo.png';
-import { useAuth } from '../providers/Auth';
-import { useSearchProvider } from '../providers/Search/Search.provider';
+import LoginModal from '../LoginModal';
+import wizelogo from '../../assets/images/logo.png';
+import { useAuth } from '../../providers/Auth';
+import { useSearchProvider } from '../../providers/Search/Search.provider';
 
 const UserAccountContainer = styled.div`
   flex-grow: 1;

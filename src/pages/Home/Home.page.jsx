@@ -1,6 +1,6 @@
 import React from 'react';
 
-import VideoListContainer from '../../components/VideosListContainer';
+import VideoListContainer from '../../components/VideoListContainer';
 import { useSearchProvider } from '../../providers/Search/Search.provider';
 
 function HomePage() {

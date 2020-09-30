@@ -4,8 +4,8 @@ import { useHistory } from 'react-router';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
-import { useAuth } from '../providers/Auth';
-import wizelogo from '../assets/images/logo.png';
+import { useAuth } from '../../providers/Auth';
+import wizelogo from '../../assets/images/logo.png';
 
 const ModalBody = styled.section`
   padding: 30px;

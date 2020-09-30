@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Drawer } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
-import { useAuth } from '../providers/Auth';
+import { useAuth } from '../../providers/Auth';
 
 const Option = styled(Link)`
   min-width: 240px;
