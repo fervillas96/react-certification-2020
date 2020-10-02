@@ -38,17 +38,9 @@ const InfoContainer = styled.div`
 
 const Video = ({ videoId }) => {
   const { currentVideo } = useVideoProvider();
-  const { dispatch, state } = useFavoritesProvider();
+  const { setAsFavorite, removeFromFavorite, state } = useFavoritesProvider();
   const videoUrl = `https://www.youtube.com/embed/${videoId}`;
   const isFavorite = state.favorites[videoId];
-
-  const setAsFavorite = () => {
-    dispatch({ type: 'ADD_FAVORITE', payload: currentVideo });
-  };
-
-  const removeFromFavorite = () => {
-    dispatch({ type: 'REMOVE_FAVORITE', payload: videoId });
-  };
 
   return (
     <VideoDataContainer>
@@ -60,7 +52,7 @@ const Video = ({ videoId }) => {
             aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
-            onClick={removeFromFavorite}
+            onClick={() => removeFromFavorite(videoId)}
             color="inherit"
           >
             <FavoriteIcon />
@@ -71,18 +63,14 @@ const Video = ({ videoId }) => {
             aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
-            onClick={setAsFavorite}
+            onClick={() => setAsFavorite(currentVideo)}
             color="inherit"
           >
             <FavoriteBorderIcon />
           </IconButton>
         )}
-        <p className="title">
-          {currentVideo && currentVideo.snippet && currentVideo.snippet.title}
-        </p>
-        <p className="description">
-          {currentVideo && currentVideo.snippet && currentVideo.snippet.description}
-        </p>
+        <p className="title">{currentVideo?.snippet?.title}</p>
+        <p className="description">{currentVideo?.snippet?.description}</p>
       </InfoContainer>
     </VideoDataContainer>
   );

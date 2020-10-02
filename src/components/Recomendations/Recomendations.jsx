@@ -19,15 +19,14 @@ const Recomendations = ({ videoId }) => {
 
   useEffect(() => {
     searchRecomendations(videoId);
-  }, [searchRecomendations, videoId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoId]);
 
   return (
     <RecomendationsContainer>
-      {recomendations &&
-        recomendations.items &&
-        recomendations.items.map((videoData) => (
-          <VideoInfoCard video={videoData} key={videoId} />
-        ))}
+      {recomendations?.items?.map((videoData) => (
+        <VideoInfoCard video={videoData} key={videoData.videoId} />
+      ))}
     </RecomendationsContainer>
   );
 };

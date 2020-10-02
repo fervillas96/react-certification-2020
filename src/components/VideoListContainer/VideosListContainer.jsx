@@ -14,11 +14,9 @@ const VideosContainer = styled.div`
 const VideosListContainer = ({ videos }) => {
   return (
     <VideosContainer>
-      {videos &&
-        videos.items &&
-        videos.items.map((videoData) => (
-          <VideoInfoCard video={videoData} key={videoData.id.videoId} />
-        ))}
+      {videos?.items?.map((videoData) => (
+        <VideoInfoCard video={videoData} key={videoData.id.videoId} />
+      ))}
     </VideosContainer>
   );
 };
