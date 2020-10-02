@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 
-import { axiosClient } from '../../utils/axios';
+const {
+  search: searchVideos,
+  recomend: recomendVideos,
+} = require('../../services/youtube');
 
 const SearchContext = React.createContext(null);
 
@@ -15,53 +18,25 @@ function useSearchProvider() {
 function SearchProvider({ children }) {
   const [videos, setVideos] = useState({});
   const [recomendations, setRecomendations] = useState({});
-  const { REACT_APP_YOUTUBE_API_KEY } = process.env;
+
+  async function getVideos(search, searchSize) {
+    const youtubeResponse = await searchVideos(search, searchSize);
+    setVideos(youtubeResponse);
+  }
 
   useEffect(() => {
-    const axiosCall = axiosClient();
-    const params = {
-      part: 'snippet',
-      key: `${REACT_APP_YOUTUBE_API_KEY}`,
-      type: 'video',
-      maxResults: 12,
-      q: 'Wizeline',
-    };
-    axiosCall.get('/search', { params }).then((apiResult) => {
-      setVideos(apiResult.data);
-    });
-  }, [REACT_APP_YOUTUBE_API_KEY]);
+    getVideos('Wizeline', 12);
+  }, []);
 
-  const searchVideo = useCallback(
-    async (search) => {
-      const axiosCall = axiosClient();
-      const params = {
-        part: 'snippet',
-        key: `${REACT_APP_YOUTUBE_API_KEY}`,
-        type: 'video',
-        maxResults: 12,
-        q: search,
-      };
-      const searchedVideos = await axiosCall.get('/search', { params });
-      setVideos(searchedVideos.data);
-    },
-    [REACT_APP_YOUTUBE_API_KEY]
-  );
+  const searchVideo = useCallback(async (search) => {
+    const youtubeResponse = await searchVideos(search, 12);
+    setVideos(youtubeResponse);
+  }, []);
 
-  const searchRecomendations = useCallback(
-    async (videoId) => {
-      const axiosCall = axiosClient();
-      const params = {
-        part: 'snippet',
-        key: `${REACT_APP_YOUTUBE_API_KEY}`,
-        type: 'video',
-        maxResults: 3,
-        relatedToVideoId: videoId,
-      };
-      const relatedVideos = await axiosCall.get('/search', { params });
-      setRecomendations(relatedVideos.data);
-    },
-    [REACT_APP_YOUTUBE_API_KEY]
-  );
+  const searchRecomendations = async (videoId) => {
+    const youtubeResponse = await recomendVideos(videoId, 3);
+    setRecomendations(youtubeResponse);
+  };
 
   return (
     <SearchContext.Provider
