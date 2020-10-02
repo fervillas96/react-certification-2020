@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
-
-const {
-  search: searchVideos,
-  recomend: recomendVideos,
-} = require('../../services/youtube');
+import {
+  search as searchVideos,
+  recomend as recomendVideos,
+} from '../../services/youtube';
 
 const SearchContext = React.createContext(null);
 
