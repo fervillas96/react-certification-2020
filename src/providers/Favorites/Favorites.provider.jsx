@@ -3,7 +3,7 @@ import { favoritesReducer, favoritesInitialState } from '../../state/reducers/fa
 
 const FavoritesContext = React.createContext(null);
 
-function useFavoritesProvider() {
+function useFavoritesContext() {
   const context = useContext(FavoritesContext);
   if (!context) {
     throw new Error(`Can't use "useFavoriteProvider" without an FavoritesProvider!`);
@@ -31,5 +31,5 @@ function FavoritesProvider({ children }) {
   );
 }
 
-export { useFavoritesProvider, FavoritesContext };
+export { useFavoritesContext };
 export default FavoritesProvider;

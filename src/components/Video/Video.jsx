@@ -5,7 +5,7 @@ import { IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { useVideoProvider } from '../../providers/VideoData/VideoData.provider';
-import { useFavoritesProvider } from '../../providers/Favorites/Favorites.provider';
+import { useFavoritesContext } from '../../providers/Favorites/Favorites.provider';
 
 const VideoDataContainer = styled.div`
   padding: 30px;
@@ -38,7 +38,7 @@ const InfoContainer = styled.div`
 
 const Video = ({ videoId }) => {
   const { currentVideo } = useVideoProvider();
-  const { setAsFavorite, removeFromFavorite, state } = useFavoritesProvider();
+  const { setAsFavorite, removeFromFavorite, state } = useFavoritesContext();
   const videoUrl = `https://www.youtube.com/embed/${videoId}`;
   const isFavorite = state.favorites[videoId];
 

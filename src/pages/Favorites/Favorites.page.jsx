@@ -1,10 +1,10 @@
 import React from 'react';
 
 import VideoListContainer from '../../components/VideoListContainer';
-import { useFavoritesProvider } from '../../providers/Favorites/Favorites.provider';
+import { useFavoritesContext } from '../../providers/Favorites/Favorites.provider';
 
 function FavoritesPage() {
-  const { state } = useFavoritesProvider();
+  const { state } = useFavoritesContext();
   const videos = {};
   const items = [];
 
