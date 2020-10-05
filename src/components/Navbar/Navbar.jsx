@@ -151,6 +151,7 @@ function Navbar({ onDisplayMenu }) {
             color="inherit"
             aria-label="open drawer"
             onClick={onDisplayMenu}
+            data-testid="navbar-button"
           >
             <MenuIcon />
           </IconButton>
@@ -187,6 +188,7 @@ function Navbar({ onDisplayMenu }) {
                   aria-haspopup="true"
                   onClick={handleMenu}
                   color="inherit"
+                  data-testid="logout-button"
                 >
                   <AccountCircle />
                 </IconButton>

@@ -12,12 +12,12 @@ import Navbar from '../Navbar';
 import SideBar from '../SideBar';
 
 function App() {
-  const [state, setState] = useState(false);
+  const [isDrawerOpen, setIsDraweOpen] = useState(false);
   const menu = 'left';
   const options = ['home'];
 
   const toggleDrawer = () => {
-    setState(!state);
+    setIsDraweOpen(!isDrawerOpen);
   };
 
   return (
@@ -29,7 +29,7 @@ function App() {
               <Navbar onDisplayMenu={() => toggleDrawer(menu, true)} />
               <SideBar
                 anchor={menu}
-                open={state}
+                open={isDrawerOpen}
                 onClose={() => toggleDrawer(menu, false)}
                 options={options}
               />

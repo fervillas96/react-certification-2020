@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router';
 
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -88,7 +87,6 @@ const useStyles = makeStyles({
 });
 
 export default function LoginModal({ open, handleClose }) {
-  const history = useHistory();
   const { login } = useAuth();
   const classes = useStyles();
 
@@ -96,7 +94,6 @@ export default function LoginModal({ open, handleClose }) {
     event.preventDefault();
     login();
     handleClose();
-    history.push('/home');
   }
 
   return (
@@ -106,17 +103,17 @@ export default function LoginModal({ open, handleClose }) {
         <LogoContainer>
           <WizeIcon src={wizelogo} />
         </LogoContainer>
-        <form onSubmit={authenticate} className="login-form">
+        <form onSubmit={authenticate} className="login-form" data-testid="login-form">
           <div className="form-group">
             <label htmlFor="username">
               <strong>username </strong>
-              <input required type="text" id="username" />
+              <input required type="text" id="username" data-testid="username-form" />
             </label>
           </div>
           <div className="form-group">
             <label htmlFor="password">
               <strong>password </strong>
-              <input required type="password" id="password" />
+              <input required type="password" id="password" data-testid="password-form" />
             </label>
           </div>
           <LoginButton type="submit">Login</LoginButton>
